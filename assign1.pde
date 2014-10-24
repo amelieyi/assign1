@@ -10,7 +10,13 @@ int h = 50;
 // declare variables
 // --------------------------------------------
 // put your code inside here
-int totalScore = 0;
+int totalScore = 500;
+
+
+int fruitId;
+int slotPosition;
+float probability;
+
 
 // --------------------------------------------
 
@@ -48,8 +54,9 @@ void draw() {
       // start rolling
       // -------------------------------------------------
       // put your code inside here
-      
-      
+totalScore = totalScore - 50;
+
+
       // -------------------------------------------------
     }
     machine.roll();
@@ -62,11 +69,47 @@ void draw() {
       // stop rolling
       // -------------------------------------------------
       // put your code inside here
-      
- 
- 
- 
-      
+
+
+int fruitA = int(random(0,6));  //fruit in slot0
+int fruitB = int(random(0,6));  //fruit in slot1
+int fruitC = int(random(0,6));  //fruit in slot2
+
+
+int _777_ = machine.probability(0.1);
+if(_777_ == 1){
+  fruitA=0;
+  fruitB=0;
+  fruitC=0;    
+}
+
+
+machine.setSlotFruit (0,fruitA);
+machine.setSlotFruit (1,fruitB);
+machine.setSlotFruit (2,fruitC);
+
+
+int seven = machine.getFruitCount(0);
+int orange = machine.getFruitCount(1);
+int cherry = machine.getFruitCount(2);
+int lemon = machine.getFruitCount(3);
+int watermalon = machine.getFruitCount(4);
+int banana = machine.getFruitCount(5);
+
+
+int score0 = machine.getSlotScore(0);
+int score1 = machine.getSlotScore(1);
+int score2 = machine.getSlotScore(2);
+
+
+score0 = seven*60+orange*10+cherry*20+lemon*30+watermalon*40+banana*50;
+score1 = seven*60+orange*10+cherry*20+lemon*30+watermalon*40+banana*50;
+score2 = seven*60+orange*10+cherry*20+lemon*30+watermalon*40+banana*50;
+
+
+totalScore = totalScore+score0+score1+score2;
+
+           
       // -------------------------------------------------
     }
     machine.stop();
@@ -83,7 +126,6 @@ void mousePressed() {
     button = !button;
   }  
 }
-
 
 
 
